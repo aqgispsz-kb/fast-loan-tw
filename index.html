@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飛始特 FAST｜低月繳貸款</title>
+
+<style>
+:root{
+  --orange:#ff5a00;
+  --blue:#2a6fff;
+  --line:#06c755;
+}
+
+body{
+  margin:0;
+  font-family:"Microsoft JhengHei",sans-serif;
+  background:#f4f7fb;
+}
+
+/* 跑馬燈 */
+.marquee{
+  position:relative;
+  height:38px;
+  background:#111;
+  color:#fff;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  font-size:14px;
+}
+.marquee-track{
+  display:flex;
+  white-space:nowrap;
+  animation:marqueeRun 28s linear infinite;
+}
+.marquee-item{
+  margin-right:60px;
+}
+@keyframes marqueeRun{
+  0%{transform:translateX(100%)}
+  100%{transform:translateX(-100%)}
+}
+.marquee::before,
+.marquee::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:60px;
+  height:100%;
+}
+.marquee::before{
+  left:0;
+  background:linear-gradient(to right,#111,transparent);
+}
+.marquee::after{
+  right:0;
+  background:linear-gradient(to left,#111,transparent);
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:55vh;
+  background:url('images/bg.jpg') center 70px no-repeat;
+  background-size:contain;
+}
+
+.hero-card{
+  position:absolute;
+  right:8%;
+  top:55%;
+  transform:translateY(-50%);
+  width:300px;
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.hero-title{
+  color:var(--orange);
+  font-weight:bold;
+  font-size:14px;
+}
+
+.hero-highlight{
+  font-size:20px;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.hero-list{
+  font-size:16px;
+  line-height:2;
+}
+
+.hero-list div::before{
+  content:"✔ ";
+  color:var(--orange);
+}
+
+/* 按鈕 */
+.btn{
+  display:block;
+  margin-top:12px;
+  padding:14px;
+  text-align:center;
+  background:var(--line);
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  animation:breath 2s infinite;
+}
+
+@keyframes breath{
+  0%{box-shadow:0 0 0 0 rgba(6,199,85,0.6);}
+  70%{box-shadow:0 0 0 12px rgba(6,199,85,0);}
+  100%{box-shadow:0 0 0 0 rgba(6,199,85,0);}
+}
+
+/* 內容 */
+.section{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.brand{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+}
+.brand img{
+  height:75px;
+}
+.brand-name{
+  font-size:28px;
+  color:var(--blue);
+  font-weight:bold;
+}
+
+.main-title{
+  font-size:34px;
+  font-weight:900;
+  margin-top:15px;
+}
+.highlight{
+  color:var(--orange);
+}
+
+.sub{
+  color:#666;
+  margin-top:10px;
+  line-height:1.8;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.desc{
+  margin-top:20px;
+  color:#444;
+  line-height:1.9;
+  max-width:780px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* 功能 */
+.features{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:30px;
+}
+.feature{
+  background:#fff;
+  padding:18px;
+  border-radius:12px;
+  width:150px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* CTA */
+.cta-note{
+  margin-top:25px;
+  color:#888;
+  font-size:14px;
+}
+
+.cta a{
+  margin-top:15px;
+  display:inline-block;
+  padding:16px 45px;
+  background:var(--line);
+  color:#fff;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:22px;
+}
+
+/* LINE */
+.line-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#06c755;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* ⭐ 社會證明動畫 ⭐ */
+.toast{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  background:#fff;
+  padding:12px 18px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  font-size:14px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.5s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* 手機 */
+@media(max-width:768px){
+  .hero{
+    background-size:cover;
+  }
+
+  .hero-card{
+    position:static;
+    transform:none;
+    margin:-80px auto 0;
+    width:90%;
+  }
+
+  .main-title{
+    font-size:26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">✔ 低月繳方案開放申請中</div>
+    <div class="marquee-item">✔ 已協助上千位客戶成功核貸</div>
+    <div class="marquee-item">✔ 線上申請・最快當日評估</div>
+    <div class="marquee-item">✔ 全程保密・專人服務</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-card">
+    <div class="hero-title">資金周轉免煩惱</div>
+    <div class="hero-highlight">低月繳・輕鬆還款</div>
+
+    <div class="hero-list">
+      <div>1 - 10 萬內</div>
+      <div>不需擔保</div>
+      <div>免照會 無騷擾</div>
+      <div>線上申請</div>
+    </div>
+
+    <a href="https://line.me/ti/p/@856doymz" target="_blank" class="btn">加入我們</a>
+  </div>
+</div>
+
+<div class="section">
+
+  <div class="brand">
+    <img src="images/logo.jpg">
+    <div class="brand-name">飛始特</div>
+  </div>
+
+  <div class="main-title">
+    每月輕鬆 <span class="highlight">低月繳</span><br>
+    無壓還款更安心
+  </div>
+
+  <div class="sub">
+    專為資金周轉需求打造，主打低月繳、彈性還款方案
+  </div>
+
+  <div class="desc">
+    全程線上申請、快速審核，不需擔保、不打擾生活，讓借貸變得簡單又安心。
+  </div>
+
+  <div class="features">
+    <div class="feature">合法立案</div>
+    <div class="feature">本利攤還</div>
+    <div class="feature">免費諮詢</div>
+    <div class="feature">流程透明</div>
+  </div>
+
+  <div class="cta-note">
+    已協助上千位客戶成功申請
+  </div>
+
+  <div class="cta">
+    <a href="https://line.me/ti/p/@856doymz" target="_blank">搶先預約</a>
+  </div>
+
+</div>
+
+<a href="https://line.me/ti/p/@856doymz" target="_blank" class="line-float">
+  LINE諮詢
+</a>
+
+<!-- ⭐ 社會證明 -->
+<div id="toast" class="toast"></div>
+
+<script>
+const messages = [
+  "✔ 台北 王先生 剛完成申請",
+  "✔ 新北 李小姐 成功核貸",
+  "✔ 高雄 陳先生 已送出資料",
+  "✔ 台中 林小姐 剛加入諮詢",
+  "✔ 桃園 黃先生 成功預約"
+];
+
+function showToast(){
+  const toast = document.getElementById("toast");
+  const msg = messages[Math.floor(Math.random()*messages.length)];
+  toast.innerText = msg;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },3000);
+}
+
+setInterval(showToast,5000);
+</script>
+
+</body>
+</html>
