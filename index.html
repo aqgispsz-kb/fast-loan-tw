@@ -175,7 +175,7 @@ body{
 .case-track{
   display:flex;
   gap:20px;
-  animation:caseRun 6s linear infinite;
+  animation:caseRun 3s linear infinite; /* ⭐ 這裡 = 3倍速 */
 }
 
 .case{
@@ -210,12 +210,11 @@ body{
 
 @media(max-width:768px){
 
-  /* ⭐ 關鍵修正：用 padding 撐出圖片高度（不裁切、不留灰） */
   .hero{
     background-size:100% auto;
     background-position:center top;
     height:0;
-    padding-top:60%;   /* ⭐ 依圖片比例調整（很重要） */
+    padding-top:60%;
     min-height:0;
   }
 
@@ -223,11 +222,10 @@ body{
     display:none;
   }
 
-  /* ⭐ 按鈕緊貼圖片 */
   .mobile-cta{
     display:block;
     text-align:center;
-    margin-top:-10px;  /* ⭐ 往上貼齊圖片 */
+    margin-top:-10px;
     padding:0 20px 20px;
   }
 
@@ -246,7 +244,6 @@ body{
     box-shadow:0 10px 25px rgba(0,0,0,0.15);
     animation:breath 2s infinite;
   }
-
 }
 </style>
 </head>
