@@ -175,7 +175,7 @@ body{
 .case-track{
   display:flex;
   gap:20px;
-  animation:caseRun 18s linear infinite;
+  animation:caseRun 6s linear infinite;
 }
 
 .case{
@@ -210,25 +210,27 @@ body{
 
 @media(max-width:768px){
 
+  /* ⭐ 關鍵修正：用 padding 撐出圖片高度（不裁切、不留灰） */
   .hero{
-    background-size:contain;
+    background-size:100% auto;
     background-position:center top;
-    height:380px;
-    min-height:auto;
-    padding:0;
+    height:0;
+    padding-top:60%;   /* ⭐ 依圖片比例調整（很重要） */
+    min-height:0;
   }
 
   .hero-card{
     display:none;
   }
 
+  /* ⭐ 按鈕緊貼圖片 */
   .mobile-cta{
     display:block;
     text-align:center;
-    padding:30px 20px;
+    margin-top:-10px;  /* ⭐ 往上貼齊圖片 */
+    padding:0 20px 20px;
   }
 
-  /* ⭐ 只有這裡做修正（置中） */
   .mobile-cta a{
     display:block;
     width:90%;
@@ -244,13 +246,13 @@ body{
     box-shadow:0 10px 25px rgba(0,0,0,0.15);
     animation:breath 2s infinite;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- 跑馬燈 -->
 <div class="marquee">
   <div class="marquee-track">
     <div class="marquee-item">✔ 低月繳方案開放申請中</div>
@@ -265,7 +267,6 @@ body{
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-card">
     <div class="hero-title">資金周轉免煩惱</div>
@@ -282,12 +283,10 @@ body{
   </div>
 </div>
 
-<!-- 手機專用按鈕 -->
 <div class="mobile-cta">
   <a href="https://line.me/ti/p/@856doymz" target="_blank">加入我們</a>
 </div>
 
-<!-- 內容 -->
 <div class="section">
 
   <div class="brand">
@@ -306,7 +305,6 @@ body{
     不再因為一次性壓力而困擾。
   </div>
 
-  <!-- 成功案例 -->
   <div class="case-box">
     <div class="case-track">
       <div class="case">✔ 王先生｜核貸8萬｜月繳輕鬆無壓</div>
